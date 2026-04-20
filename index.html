@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopeeHour - Achados para sua Casa</title>
+    <style>
+        :root {
+            --primary-orange: #ff5722;
+            --primary-blue: #0046be;
+            --bg-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        .header-banner {
+            width: 100%;
+            height: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
+            object-fit: contain;
+            border-bottom: 4px solid var(--primary-orange);
+        }
+
+        /* BOTÃO DE LINK GERAL */
+        .general-link-container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .btn-general {
+            display: block;
+            background-color: var(--primary-orange);
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-general:hover {
+            transform: scale(1.02);
+            background-color: #e64a19;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 10px auto 40px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--primary-orange);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            z-index: 1;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-size: 0.95rem;
+            margin: 0 0 10px 0;
+            height: 40px;
+            line-height: 1.3;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .price {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+        }
+
+        .btn {
+            background-color: var(--primary-blue);
+            color: #fff;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card img { height: 160px; }
+            .btn-general { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="banner_novo.png" alt="ShopeeHour" class="header-banner">
+
+    <div class="general-link-container">
+        <a href="https://s.shopee.com.br/qfhV9tdXo" target="_blank" class="btn-general">
+            👉 VER TODAS AS OFERTAS DA LOJA (SITE TODO)
+        </a>
+    </div>
+
+    <div class="container" id="vitrine"></div>
+
+    <div class="general-link-container" style="margin-bottom: 50px;">
+        <a href="https://s.shopee.com.br/qfhV9tdXo" target="_blank" class="btn-general">
+            🔥 NÃO ACHOU O QUE QUERIA? VEJA MAIS AQUI!
+        </a>
+    </div>
+
+    <script>
+        const produtos = [
+            {
+                nome: "Escova Elétrica Limpeza Kit 12 em 1 Sem Fio Giratória Portátil",
+                precoAntigo: "159,90",
+                precoAtual: "57,57",
+                desconto: "64",
+                link: "https://s.shopee.com.br/4VYzhYkWd2",
+                img: "produto 1.png"
+            },
+            {
+                nome: "Lixeira de Pia Retrátil Dobrável Acoplável Cozinha Banheiro",
+                precoAntigo: "50,00",
+                precoAtual: "23,99",
+                desconto: "52",
+                link: "https://s.shopee.com.br/2LUV7TZ3pB",
+                img: "produto 2.png"
+            },
+            {
+                nome: "Kit 10 Organizador Multiuso Modular Gavetas Acrilico Cristal",
+                precoAntigo: "64,90",
+                precoAtual: "38,90",
+                desconto: "40",
+                link: "https://s.shopee.com.br/16aLZyiRQ",
+                img: "produto 3.png"
+            },
+            {
+                nome: "Dispenser Detergente 2 em 1 com Porta Esponja Cozinha",
+                precoAntigo: "60,00",
+                precoAtual: "26,99",
+                desconto: "55",
+                link: "https://s.shopee.com.br/1BIXkTO1Nq",
+                img: "produto 4.png"
+            },
+            {
+                nome: "Luz LED para Cozinha e Quarto - Sensor de Movimento Magnética",
+                precoAntigo: "69,00",
+                precoAtual: "35,99",
+                desconto: "48",
+                link: "https://s.shopee.com.br/8ASI5nhBpj",
+                img: "produto 5.png"
+            },
+            {
+                nome: "Varal de Parede Mágico Retrátil Dobrável Grande Romelux",
+                precoAntigo: "119,90",
+                precoAtual: "79,99",
+                desconto: "33",
+                link: "https://s.shopee.com.br/gMHAKoX67",
+                img: "produto 6.png"
+            },
+            {
+                nome: "Mini Aspirador de Pó Portátil Automotivo Casa Sem Fio 3 em 1",
+                precoAntigo: "29,99",
+                precoAtual: "23,88",
+                desconto: "20",
+                link: "https://s.shopee.com.br/8KliIo2mc1",
+                img: "produto 7.png"
+            },
+            {
+                nome: "Escorredor de Louça Ajustável aço inoxidável Para Pia",
+                precoAntigo: "", 
+                precoAtual: "28,99",
+                desconto: "",
+                link: "https://s.shopee.com.br/AUqCtFrgk7",
+                img: "produto 8.png"
+            },
+            {
+                nome: "Porta Temperos Giratório Potes Vidro Suporte Cozinha",
+                precoAntigo: "79,98",
+                precoAtual: "30,59",
+                desconto: "62",
+                link: "https://s.shopee.com.br/4Aw9LvH3or",
+                img: "produto 9.png"
+            },
+            {
+                nome: "Kit Pote de Vidro Hermético Retangular 4 Travas Marmita Fit",
+                precoAntigo: "79,90",
+                precoAtual: "45,90",
+                desconto: "43",
+                link: "https://s.shopee.com.br/4LFZYM4OYx",
+                img: "produto 10.png"
+            }
+        ];
+
+        const vitrine = document.getElementById('vitrine');
+
+        produtos.forEach(p => {
+            let vendas = Math.floor(Math.random() * 500 + 120);
+            let htmlDesconto = p.desconto ? `<div class="discount-badge">-${p.desconto}%</div>` : '';
+            let htmlPrecoAntigo = p.precoAntigo ? `<div class="old-price" style="text-decoration: line-through; color: #999; font-size: 0.8rem;">De R$ ${p.precoAntigo}</div>` : '<div class="old-price" style="visibility:hidden">.</div>';
+
+            vitrine.innerHTML += `
+                <div class="card">
+                    ${htmlDesconto}
+                    <img src="${p.img}" alt="${p.nome}">
+                    <div class="card-body">
+                        <h3>${p.nome}</h3>
+                        ${htmlPrecoAntigo}
+                        <div class="price">R$ ${p.precoAtual}</div>
+                        <div style="font-size: 0.75rem; color: #777; margin-bottom: 10px;">🔥 ${vendas} vendidos</div>
+                        <a class="btn" href="${p.link}" target="_blank">Aproveitar Oferta</a>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
+<style>
+  
+    .trust-bar {
+        background: #fff;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1100px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        border: 1px dashed #ccc;
+    }
+
+    .trust-item {
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+    }
+
+    .trust-item img {
+        width: 40px;
+        margin-bottom: 8px;
+    }
+
+    .trust-item p {
+        font-size: 0.8rem;
+        margin: 0;
+        font-weight: bold;
+        color: #555;
+    }
+
+    footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 30px 15px;
+        margin-top: 50px;
+        font-size: 0.85rem;
+    }
+
+    .shopee-badge {
+        background: #ff5722;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="trust-bar">
+        <div class="trust-item">
+            <img src="https://img.icons8.com/color/48/shopee.png" alt="Shopee">
+            <p>Parceiro Oficial Shopee</p>
+        </div>
+        <div class="trust-item">
+    <img src="https://img.icons8.com/fluency/48/verified-badge.png" alt="Seguro">
+    <p>Compra 100% Segura</p>
+</div>
+        <div class="trust-item">
+            <img src="https://img.icons8.com/color/48/pix.png" alt="Pix">
+            <p>Pagamento Via PIX</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>ShopeeHour - Curadoria de Achados</strong></p>
+        <p>Os links nesta página redirecionam para o site oficial da <span class="shopee-badge">Shopee</span>.</p>
+        <p>A transação, pagamento e entrega são realizados exclusivamente pela Shopee Brasil.</p>
+        <p style="font-size: 0.7rem; color: #aaa; margin-top: 15px;">© 2026 ShopeeHour - Todos os direitos reservados.</p>
+    </footer>
