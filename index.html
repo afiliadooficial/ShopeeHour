@@ -11,7 +11,6 @@
             --primary-blue: #0046be;
             --bg-gray: #f4f4f4;
             --text-dark: #333;
-            --trust-green: #28a745;
         }
 
         body {
@@ -30,31 +29,6 @@
             display: block;
             object-fit: contain;
             border-bottom: 4px solid var(--primary-orange);
-        }
-
-        /* BARRA DE CREDIBILIDADE */
-        .trust-bar {
-            background: #fff;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: bold;
-        }
-
-        .trust-item span {
-            color: var(--trust-green);
-            margin-right: 5px;
-            font-size: 1.1rem;
         }
 
         .general-link-container {
@@ -105,7 +79,6 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .discount-badge {
@@ -168,7 +141,40 @@
             border-radius: 8px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem;
+        }
+
+        /* ESTILO DA BARRA DE CONFIANÇA */
+        .trust-bar {
+            background: #fff;
+            padding: 20px;
+            margin: 40px auto 0 auto;
+            max-width: 1100px;
+            border-radius: 12px 12px 0 0; /* Arredondado só em cima */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            border: 1px dashed #ccc;
+            border-bottom: none; /* Cola no footer */
+        }
+
+        .trust-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            padding: 10px;
+        }
+
+        .trust-item img {
+            width: 40px;
+            margin-bottom: 8px;
+        }
+
+        .trust-item p {
+            font-size: 0.8rem;
+            margin: 0;
+            font-weight: bold;
+            color: #555;
         }
 
         footer {
@@ -176,27 +182,28 @@
             color: #fff;
             text-align: center;
             padding: 30px 15px;
-            margin-top: 50px;
             font-size: 0.85rem;
+        }
+
+        .shopee-badge {
+            background: #ff5722;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
         }
 
         @media (max-width: 600px) {
             .container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .card img { height: 160px; }
-            .btn-general { font-size: 0.9rem; }
-            .trust-bar { gap: 10px; }
+            .trust-bar { padding: 10px; }
+            .trust-item { min-width: 100px; }
         }
     </style>
 </head>
 <body>
 
     <img src="banner_novo.png" alt="ShopeeHour" class="header-banner">
-
-    <div class="trust-bar">
-        <div class="trust-item"><span>🛡️</span> Compra 100% Segura</div>
-        <div class="trust-item"><span>✅</span> Ofertas Verificadas</div>
-        <div class="trust-item"><span>🚀</span> Parceiro Oficial Shopee</div>
-    </div>
 
     <div class="general-link-container">
         <a href="https://s.shopee.com.br/qfhV9tdXo" target="_blank" class="btn-general">
@@ -212,16 +219,31 @@
         </a>
     </div>
 
+    <div class="trust-bar">
+        <div class="trust-item">
+            <img src="https://img.icons8.com/color/48/shopee.png" alt="Shopee">
+            <p>Parceiro Oficial Shopee</p>
+        </div>
+
+        <div class="trust-item">
+    <img src="https://img.icons8.com/fluency/48/verified-badge.png" alt="Seguro">
+    <p>Compra 100% Segura</p>
+</div>
+        <div class="trust-item">
+            <img src="https://img.icons8.com/color/48/pix.png" alt="Pix">
+            <p>Pagamento Via PIX</p>
+        </div>
+    </div>
+
     <footer>
-        <p><strong>ShopeeHour</strong> - Achadinhos que resolvem sua vida!</p>
-        <p style="opacity: 0.7;">Como parceiro oficial da Shopee, recebemos comissão por compras qualificadas. <br>
-        Isso não aumenta o preço para você, mas ajuda a manter nosso trabalho. ❤️</p>
-        <p>&copy; 2026 ShopeeHour - Todos os direitos reservados.</p>
+        <p><strong>ShopeeHour - Curadoria de Achados</strong></p>
+        <p>Os links nesta página redirecionam para o site oficial da <span class="shopee-badge">Shopee</span>.</p>
+        <p>A transação, pagamento e entrega são realizados exclusivamente pela Shopee Brasil.</p>
+        <p style="font-size: 0.7rem; color: #aaa; margin-top: 15px;">© 2026 ShopeeHour - Todos os direitos reservados.</p>
     </footer>
 
     <script>
         const produtos = [
-            // ANTIGOS
             { nome: "Escova Elétrica Limpeza Kit 12 em 1 Sem Fio", precoAntigo: "159,90", precoAtual: "57,57", desconto: "64", link: "https://s.shopee.com.br/4VYzhYkWd2", img: "produto 1.png" },
             { nome: "Lixeira de Pia Retrátil Dobrável Acoplável", precoAntigo: "50,00", precoAtual: "23,99", desconto: "52", link: "https://s.shopee.com.br/2LUV7TZ3pB", img: "produto 2.png" },
             { nome: "Kit 10 Organizador Multiuso Modular Gavetas", precoAntigo: "64,90", precoAtual: "38,90", desconto: "40", link: "https://s.shopee.com.br/16aLZyiRQ", img: "produto 3.png" },
@@ -232,26 +254,24 @@
             { nome: "Escorredor de Louça Ajustável Aço Inox", precoAntigo: "", precoAtual: "28,99", desconto: "", link: "https://s.shopee.com.br/AUqCtFrgk7", img: "produto 8.png" },
             { nome: "Porta Temperos Giratório Potes Vidro", precoAntigo: "79,98", precoAtual: "30,59", desconto: "62", link: "https://s.shopee.com.br/4Aw9LvH3or", img: "produto 9.png" },
             { nome: "Kit Pote de Vidro Hermético Marmita Fit", precoAntigo: "79,90", precoAtual: "45,90", desconto: "43", link: "https://s.shopee.com.br/4LFZYM4OYx", img: "produto 10.png" },
-            
-            // NOVOS (CIRÚRGICOS)
-            { nome: "Lâmpada de Emergência Inteligente Recarregável", precoAntigo: "80,00", precoAtual: "79,00", desconto: "1", link: "https://s.shopee.com.br/gMIbrTjX6", img: "produto 11.png" },
+            { nome: "Lâmpada Bulbo De Emergência LED Inteligente", precoAntigo: "80,00", precoAtual: "79,00", desconto: "1", link: "https://s.shopee.com.br/gMIbrTjX6", img: "produto 11.png" },
             { nome: "Tira Mata Mofo PREMIUM + Spray Anti Mofo 1L", precoAntigo: "", precoAtual: "19,99", desconto: "", link: "https://s.shopee.com.br/1LbzPEjYh6", img: "produto 12.png" },
             { nome: "Forma De Airfryer Descartável Antiaderente", precoAntigo: "", precoAtual: "10,49", desconto: "", link: "https://s.shopee.com.br/1BIZDMn2Hb", img: "produto 13.png" },
-            { nome: "Bomba Elétrica para Galão de Água 20L USB", precoAntigo: "39,80", precoAtual: "19,90", desconto: "50", link: "https://s.shopee.com.br/16bpL5507", img: "produto 14.png" },
+            { nome: "Bomba Elétrica Filtro 20L Para Galão De Água", precoAntigo: "39,80", precoAtual: "19,90", desconto: "50", link: "https://s.shopee.com.br/16bpL5507", img: "produto 14.png" },
             { nome: "Mini Ventilador De Pescoço Esportivo Portátil", precoAntigo: "", precoAtual: "39,90", desconto: "", link: "https://s.shopee.com.br/8KljklOtfG", img: "produto 15.png" },
             { nome: "Desentupidor Manual 5m Mola de Aço", precoAntigo: "45,00", precoAtual: "31,90", desconto: "29", link: "https://s.shopee.com.br/10z91TYDa0", img: "produto 16.png" },
-            { nome: "Desentupidor Sanitário Alta Pressão Bomba", precoAntigo: "43,32", precoAtual: "28,78", desconto: "34", link: "https://s.shopee.com.br/7fW2xqEBva", img: "produto 17.png" },
-            { nome: "Kit Sacos Protetores para Lavar Roupas", precoAntigo: "45,95", precoAtual: "22,99", desconto: "50", link: "https://s.shopee.com.br/2g7N0qTcG4", img: "produto 18.png" },
-            { nome: "Reparador de Couro e Estofados Profissional", precoAntigo: "", precoAtual: "37,89", desconto: "", link: "https://s.shopee.com.br/2qQnHPriDk", img: "produto 19.png" },
-            { nome: "Adaptador Elétrico Articulado Giratório 3 Saídas", precoAntigo: "45,00", precoAtual: "24,98", desconto: "44", link: "https://s.shopee.com.br/7AZmNWFW5l", img: "produto 20.png" },
+            { nome: "Desentupidor Sanitário Bomba de Sucção", precoAntigo: "43,32", precoAtual: "28,78", desconto: "34", link: "https://s.shopee.com.br/7fW2xqEBva", img: "produto 17.png" },
+            { nome: "Kit Sacos Para Lavar Roupas Na Maquina", precoAntigo: "45,95", precoAtual: "22,99", desconto: "50", link: "https://s.shopee.com.br/2g7N0qTcG4", img: "produto 18.png" },
+            { nome: "Reparador de Couro Liso - Estofados e Autos", precoAntigo: "", precoAtual: "37,89", desconto: "", link: "https://s.shopee.com.br/2qQnHPriDk", img: "produto 19.png" },
+            { nome: "Adaptador Elétrico Articulado 3 Saídas 10A", precoAntigo: "45,00", precoAtual: "24,98", desconto: "44", link: "https://s.shopee.com.br/7AZmNWFW5l", img: "produto 20.png" },
             { nome: "Aspirador de Pó Anti-Ácaro UV Portátil USB", precoAntigo: "", precoAtual: "114,00", desconto: "", link: "https://s.shopee.com.br/3VgU154CZG", img: "produto 21.png" },
-            { nome: "Aspirador UV Premium Anti Ácaros para Sofá", precoAntigo: "", precoAtual: "171,00", desconto: "", link: "https://s.shopee.com.br/AKWoBY0MqB", img: "produto 22.png" }
+            { nome: "Aspirador Premium Cama e Sofá Luz UV", precoAntigo: "", precoAtual: "171,00", desconto: "", link: "https://s.shopee.com.br/AKWoBY0MqB", img: "produto 22.png" }
         ];
 
         const vitrine = document.getElementById('vitrine');
 
         produtos.forEach(p => {
-            let vendas = Math.floor(Math.random() * 500 + 150);
+            let vendas = Math.floor(Math.random() * 400 + 120);
             let htmlDesconto = p.desconto ? `<div class="discount-badge">-${p.desconto}%</div>` : '';
             let htmlPrecoAntigo = p.precoAntigo ? `<div class="old-price">De R$ ${p.precoAntigo}</div>` : '<div class="old-price" style="visibility:hidden">.</div>';
 
@@ -265,10 +285,10 @@
                             ${htmlPrecoAntigo}
                             <div class="price">R$ ${p.precoAtual}</div>
                         </div>
-                        <div style="font-size: 0.75rem; color: #777; margin-bottom: 12px; display: flex; align-items: center;">
-                            <span style="color: #ff9900; margin-right: 4px;">⭐⭐⭐⭐⭐</span> (${vendas})
+                        <div style="font-size: 0.75rem; color: #777; margin-bottom: 12px;">
+                            ⭐ 4.9 | 🔥 ${vendas} vendidos
                         </div>
-                        <a class="btn" href="${p.link}" target="_blank">Ver na Shopee</a>
+                        <a class="btn" href="${p.link}" target="_blank">Aproveitar Oferta</a>
                     </div>
                 </div>
             `;
