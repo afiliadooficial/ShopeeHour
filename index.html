@@ -33,6 +33,26 @@
             border-bottom: 4px solid var(--primary-orange);
         }
 
+        /* AJUSTE DO NOVO BANNER 5.5 */
+        .promo-banner-container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .promo-banner-container a {
+            display: block;
+            text-decoration: none;
+        }
+        .promo-banner-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .promo-banner-container img:hover { transform: scale(1.01); }
+
         /* BARRA DE PESQUISA */
         .search-container {
             max-width: 1100px;
@@ -100,8 +120,6 @@
         }
 
         .card:hover { transform: translateY(-8px); }
-
-        /* Esconder cards que não batem na busca */
         .card.hidden { display: none; }
 
         .discount-badge {
@@ -143,7 +161,6 @@
         .trust-item p { font-size: 0.8rem; margin: 0; font-weight: bold; color: #555; }
 
         footer { background: #333; color: #fff; text-align: center; padding: 30px 15px; font-size: 0.85rem; }
-        .shopee-badge { background: #ff5722; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
 
         @media (max-width: 600px) {
             .container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -154,6 +171,12 @@
 <body>
 
     <img src="banner_novo.png" alt="ShopeeHour" class="header-banner">
+
+    <div class="promo-banner-container">
+        <a href="https://s.shopee.com.br/qfhV9tdXo" target="_blank">
+            <img src="imagem_2026-04-22_010505300.png" alt="Esquenta Shopee 5.5">
+        </a>
+    </div>
 
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="🔍 Digite o que você procura... (ex: churrasco, limpeza, cozinha)">
@@ -250,14 +273,12 @@
             });
         }
 
-        // Lógica da Barra de Pesquisa
         document.getElementById('searchInput').addEventListener('input', (e) => {
             const termo = e.target.value.toLowerCase();
             const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
             renderizarProdutos(filtrados);
         });
 
-        // Inicializar vitrine
         renderizarProdutos(produtos);
     </script>
 </body>
