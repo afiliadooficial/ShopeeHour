@@ -33,25 +33,29 @@
             border-bottom: 4px solid var(--primary-orange);
         }
 
-        /* AJUSTE DO NOVO BANNER 5.5 */
+        /* AJUSTE DO NOVO BANNER 5.5 SEM FUNDO */
         .promo-banner-container {
             max-width: 1100px;
             margin: 20px auto;
             padding: 0 15px;
+            background: transparent; /* Garante fundo transparente */
         }
         .promo-banner-container a {
             display: block;
             text-decoration: none;
+            background: transparent;
         }
         .promo-banner-container img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             display: block;
             transition: transform 0.3s ease;
+            /* Removi o border-radius e o box-shadow para não marcar o quadrado branco */
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); /* Sombra suave só no desenho da imagem */
         }
-        .promo-banner-container img:hover { transform: scale(1.01); }
+        .promo-banner-container img:hover { 
+            transform: scale(1.03); 
+        }
 
         /* BARRA DE PESQUISA */
         .search-container {
